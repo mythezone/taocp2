@@ -3,7 +3,7 @@
 
 title: Learning TAOCP
 author: Mythezone
-logo: logo.png
+logo: logo.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -28,7 +28,7 @@ sphinx:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/Mythe-Mu/taocp  # Online location of your book
+  url: https://github.com/mythezone/taocp2  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
