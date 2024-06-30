@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>基本概念 &#8212; Learning TAOCP</title>
+    <title>1.1 算法 &#8212; Learning TAOCP</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'volume1/chapter1/section1-1';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -181,7 +183,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1卷 基本算法</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">基本概念</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.1 算法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter2/section2-1.html">信息结构</a></li>
 </ul>
 
@@ -368,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>基本概念</h1>
+    <h1>1.1 算法</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,7 +380,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">一般概念</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">习题</a></li>
 </ul>
             </nav>
         </div>
@@ -391,10 +393,117 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>基本概念<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>1.1 算法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<ul>
+<li><p>历史溯源：算法Algorithm一词的来历</p></li>
+<li><p><strong>算法E （欧几里得算法）</strong>：</p>
+<ul>
+<li><p>这应该是现在已知最古老的算法，又被称为“辗转相除法”，用于求解两个正整数的最大公约数。</p></li>
+<li><p>出自《几何原本》第七卷命题1和命题2.</p></li>
+<li><p>算法分为三个步骤：</p>
+<blockquote>
+<div><p>E1: [求余数]
+E2:[余数为0？]
+E3:[减少]</p>
+</div></blockquote>
+</li>
+<li><p>使用Python实现这个算法的代码如下：</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Eculid</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    求正整数m,n的最大公约数</span>
+<span class="sd">    :param m: 给定的正整数</span>
+<span class="sd">    :param n: 给定的正整数</span>
+<span class="sd">    :return: 最大公约数</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#设定随意大于0的数</span>
+    <span class="k">while</span> <span class="n">r</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span>  <span class="c1">#取余</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">n</span>   <span class="c1">#重新赋值（辗转相除）</span>
+    <span class="k">return</span> <span class="n">n</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>算法的现代意义：recipe, process, method, technique, procedure, routine, rigmarole</p></li>
+<li><p>算法的五个重要特征</p>
+<ol class="arabic simple">
+<li><p>有限性：要求步骤非常有限、合理</p></li>
+<li><p>确定性</p></li>
+<li><p>输入</p></li>
+<li><p>输出</p></li>
+<li><p>能行性（有效性）</p></li>
+</ol>
+</li>
+<li><p>形式的定义一个<strong>计算方法</strong>为一个四元组</p>
+<ul>
+<li><p>举例一个四元组作为一个函数取代前面提到的欧几里得算法</p></li>
+<li><p>另一个例子有点难懂，先做一个标记P7</p></li>
+</ul>
+</li>
+</ul>
 <section id="id2">
-<h2>一般概念<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>内容</p>
+<h2>习题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><strong>1. [10] 用最少的替代把（a,b,c,d)变成(b,c,d,a)</strong>
+解：显然，这里完成了一个轮换，五次替换可以完成任务如下：
+t&lt;-a, a&lt;-b, b&lt;-c, c&lt;-d, d&lt;-t</p>
+<p><strong>2.[15]证明，在步骤E1开始时，m总是大雨n的，除了这一步头一次出现时可能出现相反的情况外。</strong>
+解：因为除了第一步以外，每次计算n都变成了m%n，m变成n，所以n是m的余数，当然必须小与n。
+当余数为零时退出循环，返回最后一次的除数（即已经整除）就是最大公约数。</p>
+<p><strong>3.[20]提高算法E的效率，避免m&lt;-n这样的赋值</strong>
+解：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Eculid_Modified</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    求正整数m,n的最大公约数</span>
+<span class="sd">    :param m: 给定的正整数</span>
+<span class="sd">    :param n: 给定的正整数</span>
+<span class="sd">    :return: 最大公约数</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span>   <span class="c1">#第一次计算余数值，若为零跳过循环直接输出n</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">r</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>   <span class="c1">#该循环内包含两次取余，可以避免简单赋值</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="n">r</span>  <span class="c1">#为n赋值为此次余数值</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">r</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">%</span> <span class="n">n</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#为r赋值为此次余数值</span>
+            <span class="k">return</span> <span class="n">n</span>
+
+<span class="c1">#测试</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span> <span class="p">:</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">Eculid_Modified</span><span class="p">(</span><span class="mi">2166</span><span class="p">,</span><span class="mi">6099</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>4.[16]2166和6099的最大公因子是多少？</strong>
+解：利用以上算法可以得到：57</p>
+<p><strong>5.[12]证明“阅读本套书的流程”不是一个真正的算法。</strong>
+解：这个流程的漏洞还挺多的。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. 12到13之间有一个死循环
+2. 除以上，没有终止条件，也就是说永远也看不完这本书，哈哈，作者的阴谋。
+</pre></div>
+</div>
+<p><strong>6.[20]当n = 5 时，执行步骤E1 的平均次数T5 是多少？</strong>
+解：E1 是相除取余，对m可以取得的任意正整数，其余数为0，1，2，3，4的概率均为0.2，之后相应的E1执行步骤为0，1，2，3，2，所以期望是1.6次。</p>
+<p><strong>7.[M21]假设m已知而允许n取遍所有的正整数，令<span class="math notranslate nohighlight">\(U_m\)</span>是算法E中执行步骤E1的平均次  解：数。证明<span class="math notranslate nohighlight">\(U_m\)</span>是明确定义的。<span class="math notranslate nohighlight">\(U_m\)</span>和<span class="math notranslate nohighlight">\(T_m\)</span>有什么关系吗？</strong>
+在一次相除后，余数只可能是0至m-1之间的数
+对于余数分别为0，1，2，3，…等情况，可以简单计算得需要的平均步骤依次为0，1，1.5，1.83，…
+那么规律就是，下一个余数的平均步数是前面所有平均步数的平均值加1。所以可以得到<span class="math notranslate nohighlight">\(U_m\)</span>的递推公式，求得<span class="math notranslate nohighlight">\(U_m\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin {aligned}
+U_m&amp;=\frac{U_1+U_2+\dots+U_{m-1}}{m-1}+1\\\
+&amp;=\frac{(U_{m-1}-1)\times(m-2)+U_{m-1}}{m-1}\\\
+&amp;=\frac{(U_{m-1}-1)\times(m-2)+(U_{m-1}-1)+1}{m-1}\\\
+&amp;=U_{m-1}+\frac{1}{m-1}
+\end {aligned}
+\)</span><span class="math notranslate nohighlight">\(
+因为分母有m-1，所以\)</span>m\geq2<span class="math notranslate nohighlight">\(,用几个数验证，没有问题
+那么实际上\)</span>U_m=1+\frac{1}{2}+\frac{1}{3}+\dots++\frac{1}{m-1}<span class="math notranslate nohighlight">\(就是调和级数。当\)</span>m\to\infty$该级数发散，也就是说这个时候可能需要无穷次相除才能得到结果。</p>
 </section>
 </section>
 
@@ -462,7 +571,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">一般概念</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">习题</a></li>
 </ul>
   </nav></div>
 
